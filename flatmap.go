@@ -52,6 +52,8 @@ func flatten(result FlatMap, prefix string, v reflect.Value) (err error) {
 		}
 	case reflect.String:
 		result[prefix] = v.String()
+	case reflect.Invalid:
+		result[prefix] = ""
 	default:
 		return fmt.Errorf("Unknown: %s", v)
 	}
